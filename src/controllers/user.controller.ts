@@ -15,7 +15,9 @@ export async function createUsers(req:Request, res: Response) {
     const response = await userRepository.create({name, email, idade})
     
     if (response) {
-        res.status(201).json(response)
+        res.status(201).json({message: "Usuario criado", response})
+    } else {
+        res.status(400).json({message: "Error ao criar"})
     }
 }
 
